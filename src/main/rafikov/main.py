@@ -1,15 +1,15 @@
+import sys
+
+sys.path.append('/home/bolsistas/.alx/populationDynamics-validation/src/main')
+
 
 from scipy.integrate import solve_ivp
 import numpy as np
+from time import time
+from Data import *
+import utils as u
 
-
-# For numerical simulations of interactions between the sugar-
-# cane borer and its parasitoid we use the following values of model
-
-
-# coefficients: n1 = 1/50, n2 = 1/16, g = 40, m2 = 0.036, m3 = 0.5,
-# K = 25, 000.
-# dP / dt = lambda * n2 * infected - m3 * parasitoid
+file = f'files/rafikov/{time()}'
 
 r = 0.1
 K = 25000
@@ -46,9 +46,12 @@ timeInterval = np.linspace(*days, 10)
 
 res = solve_ivp(system, days, initialValues, t_eval=timeInterval)
 
+results = []
 
 for i in range(len(res.t)):
-   print(f'Tempo: {res.t[i]:.2f} -> Hosts: {res.y[0][i]:.2f}, Infected: {res.y[1][i]:.2f}, Parasitoid: {res.y[2][i]:.2f}')
+   u.saveFile(file, Data(res.t[i], res.y[0][i], res.y[1][i], res.y[2][i]))
+   # results.append(Data(res.t[i], res.y[0][i], res.y[1][i], res.y[2][i]))
+   # print(results)
 # def hostVariation(r, hosts, K, n1) -> HostState:
 #     return HostState.NATURAL_CASE_DEATH
 
