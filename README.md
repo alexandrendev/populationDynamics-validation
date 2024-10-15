@@ -24,3 +24,12 @@ $$
 - **E:** Eggs Density (Densidade de ovos)
 - **P:** Parasitised Eggs (Ovos Infectados)
 - **H:** Larvae Density Population (População de larvas)
+- **n1:** fração de ovos que eclodiram no tempo t
+- **n2:** fração de ovos parasitados em que o parasita adulto emerge no tempo t
+- **n3:** fração da população de larvas que viraram pulpa no tempo t
+- **k:** Limite de carga/capacidade
+- **beta:** taxa de reprodução
+- **m1:** Taxa de mortalidade do ovo
+- **m2:** Taxa de mortalidade dos ovos infectados
+- **m3:** Taxa de mortalidade das larvas
+- *U:* 
