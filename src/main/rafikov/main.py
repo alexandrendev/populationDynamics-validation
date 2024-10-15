@@ -21,7 +21,7 @@ gamma = 40
 m3 = 0.5
 
 
-def sistema(t, y) ->  list[float]:
+def system(t, y) ->  list[float]:
    H, I, P = y
   
    dHdt = r * (1 - H / K) * H - n1 * H - beta * H * P
@@ -34,6 +34,7 @@ def sistema(t, y) ->  list[float]:
 Hosts = 3000
 Infected = 600
 Parasitoid = 3000
+
 initialValues = [Hosts, Infected, Parasitoid]
 
 
@@ -43,14 +44,11 @@ days = (0, 10)
 timeInterval = np.linspace(*days, 10)
 
 
-res = solve_ivp(sistema, days, initialValues, t_eval=timeInterval)
+res = solve_ivp(system, days, initialValues, t_eval=timeInterval)
 
 
 for i in range(len(res.t)):
    print(f'Tempo: {res.t[i]:.2f} -> Hosts: {res.y[0][i]:.2f}, Infected: {res.y[1][i]:.2f}, Parasitoid: {res.y[2][i]:.2f}')
 # def hostVariation(r, hosts, K, n1) -> HostState:
-  
-  
-  
 #     return HostState.NATURAL_CASE_DEATH
 
