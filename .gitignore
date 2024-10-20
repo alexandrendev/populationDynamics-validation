@@ -1,1 +1,3 @@
 /broca/*
+__pycache/*
+*.pyc

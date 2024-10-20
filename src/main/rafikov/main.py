@@ -1,13 +1,12 @@
 import sys
-
-sys.path.append('/home/bolsistas/.alx/populationDynamics-validation/src/main')
-
-
+# sys.path.append('/home/bolsistas/.alx/populationDynamics-validation/src/main')
+sys.path.append('/home/alx/Projetos/populationDynamics-validation/src/main')
 from scipy.integrate import solve_ivp
 import numpy as np
 from time import time
-from Data import *
 import utils as u
+from plot.Parameter import Parameter
+from plot.plot import *
 
 file = f'files/rafikov/{time()}'
 
@@ -40,18 +39,19 @@ initialValues = [Hosts, Infected, Parasitoid]
 
 
 
-days = (0, 10)
-timeInterval = np.linspace(*days, 10)
+days = (0, 100)
+timeInterval = np.linspace(*days, 100)
 
 
 res = solve_ivp(system, days, initialValues, t_eval=timeInterval)
 
-results = []
+time_points = Parameter('Time(Days)', res.t)
 
-for i in range(len(res.t)):
-   u.saveFile(file, Data(res.t[i], res.y[0][i], res.y[1][i], res.y[2][i]))
-   # results.append(Data(res.t[i], res.y[0][i], res.y[1][i], res.y[2][i]))
-   # print(results)
-# def hostVariation(r, hosts, K, n1) -> HostState:
-#     return HostState.NATURAL_CASE_DEATH
+params = [
+   Parameter('Hosts(H)', res.y[0]),
+   Parameter('Infected(I)', res.y[1]),
+   Parameter('Parasitoids(P)', res.y[2])
+]
+
+plotGraph(time_points, params, 'sakhtivel')
 
