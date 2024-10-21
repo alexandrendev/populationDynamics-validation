@@ -40,7 +40,7 @@ initialValues = [Hosts, Infected, Parasitoid]
 
 
 days = (0, 1000)
-timeInterval = np.linspace(*days, 100)
+timeInterval = np.linspace(*days, 10000)
 
 
 res = solve_ivp(system, days, initialValues, t_eval=timeInterval)

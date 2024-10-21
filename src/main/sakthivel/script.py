@@ -1,3 +1,7 @@
+import sys
+# sys.path.append('/home/bolsistas/.alx/populationDynamics-validation/src/main')
+sys.path.append('/home/alx/Projetos/populationDynamics-validation/src/main')
+
 from scipy.integrate import solve_ivp
 import numpy as np
 from plot.Parameter import Parameter
@@ -20,7 +24,7 @@ def system(t, y) -> list[float]:
     E, P, L = y
     
     dEdt = beta * (1 - E/K) * E - m1*E - n1*E - alpha*E*P
-    dPdt = alpha*E*P - m2*P - n2*P + U
+    dPdt = alpha*E*P - m2*P - n2*P
     dPdt = n1*E - m2*L - n3*L
     
     return [dEdt, dPdt, dPdt]
@@ -31,8 +35,8 @@ LarvaeDensity = 2500
 
 initialValues = [ EggsDensity, ParasitisedEggs, LarvaeDensity]
 
-days = (0, 10)
-timeInterval = np.linspace(*days, 10)
+days = (0, 100)
+timeInterval = np.linspace(*days, 1000)
 
 res = solve_ivp(system, days, initialValues, t_eval=timeInterval)
 
@@ -48,4 +52,4 @@ params = [
     Parameter('Larvae Density(L)', res.y[2])
 ]
 
-
+plotGraph(timePoints, params, 'sakthivel')
