@@ -1,6 +1,7 @@
 from scipy.integrate import solve_ivp
 import numpy as np
-import matplotlib as plt
+from plot.Parameter import Parameter
+from plot.plot import *
 
 
 m1 = 0.03566
@@ -35,21 +36,16 @@ timeInterval = np.linspace(*days, 10)
 
 res = solve_ivp(system, days, initialValues, t_eval=timeInterval)
 
-
-# Resultados
 time_points = res.t
-E_values = res.y[0]  # Densidade de Ovos
-P_values = res.y[1]  # Densidade de Ovos Parasitados
-L_values = res.y[2]  # Densidade de Larvas
+E_values = res.y[0]
+P_values = res.y[1]
+L_values = res.y[2]
 
-# Plotando os resultados
-plt.figure(figsize=(10, 6))
-plt.plot(time_points, E_values, label='Densidade de Ovos (E)')
-plt.plot(time_points, P_values, label='Densidade de Ovos Parasitados (P)')
-plt.plot(time_points, L_values, label='Densidade de Larvas (L)')
-plt.title('Dinamica Populacional')
-plt.xlabel('Tempo (dias)')
-plt.ylabel('Densidade')
-plt.legend()
-plt.grid()
-plt.show()
+timePoints = Parameter('Time(days)', res.t)
+params = [
+    Parameter('Eggs Density(E)', res.y[0]),
+    Parameter('Parasitized Eggs(P)', res.y[1]),
+    Parameter('Larvae Density(L)', res.y[2])
+]
+
+
