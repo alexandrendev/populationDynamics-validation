@@ -39,7 +39,7 @@ initialValues = [Hosts, Infected, Parasitoid]
 
 
 
-days = (0, 100)
+days = (0, 1000)
 timeInterval = np.linspace(*days, 100)
 
 
@@ -53,5 +53,5 @@ params = [
    Parameter('Parasitoids(P)', res.y[2])
 ]
 
-plotGraph(time_points, params, 'sakhtivel')
+plotGraph(time_points, params, 'rafikov')
 
