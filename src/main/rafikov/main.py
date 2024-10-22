@@ -1,6 +1,6 @@
 import sys
-# sys.path.append('/home/bolsistas/.alx/populationDynamics-validation/src/main')
-sys.path.append('/home/alx/Projetos/populationDynamics-validation/src/main')
+sys.path.append('/home/bolsistas/.alx/populationDynamics-validation/src/main')
+# sys.path.append('/home/alx/Projetos/populationDynamics-validation/src/main')
 from scipy.integrate import solve_ivp
 import numpy as np
 from time import time
@@ -57,5 +57,11 @@ def rafikov(parameters: Param, days: int, instantsPerDay: int)-> None:
    plotGraph(time_points, params, f'rafikov-{parameters.equilibrium.description}')
 
 
+param = Param(Equilibrium.FIRST)
+rafikov(param, 1000, 10)
+
 param = Param(Equilibrium.SECOND)
-rafikov(param, 250, 10)
+rafikov(param, 1000, 10)
+
+param = Param(Equilibrium.THIRD)
+rafikov(param, 1000, 10)
