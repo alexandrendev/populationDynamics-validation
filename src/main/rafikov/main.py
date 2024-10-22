@@ -57,5 +57,5 @@ def rafikov(parameters: Param, days: int, instantsPerDay: int)-> None:
    plotGraph(time_points, params, f'rafikov-{parameters.equilibrium.description}')
 
 
-param = Param(Equilibrium.THIRD)
+param = Param(Equilibrium.SECOND)
 rafikov(param, 250, 10)

@@ -8,9 +8,9 @@ def plotGraph(time: Parameter, parameters: list[Parameter], imageName: str) -> N
         plt.plot(time.values, param.values, label=param.label, marker='.')
         
 
-    plt.title('Dinamica Populacional ao Longo do Tempo')
-    plt.xlabel('Tempo (dias)')
-    plt.ylabel('Densidade Populacional')
+    plt.title('Popupation Dynamics over time')
+    plt.xlabel('Time (Days)')
+    plt.ylabel('Population Density')
     plt.legend()
     plt.grid()
     plt.savefig(f'graphs/{imageName}.png') 
