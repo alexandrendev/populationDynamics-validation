@@ -29,9 +29,9 @@ def sakthivel(param: Param, days: int, instantsPerDay: int)-> None:
         return [dEdt, dPdt, dLdt]
     
 
-    EggsDensity = 100
+    EggsDensity = 800
     ParasitisedEggs = 100
-    LarvaeDensity = 250
+    LarvaeDensity = 2500
 
     initialValues = [ EggsDensity, ParasitisedEggs, LarvaeDensity]
 
@@ -50,11 +50,11 @@ def sakthivel(param: Param, days: int, instantsPerDay: int)-> None:
     plotGraph(timePoints, params, f'sakthivel-{param.equilibrium.description}')
 
 # parameters = Param(Equilibrium.FIRST)
-# sakthivel(parameters, 500, 10)
+# sakthivel(parameters, 2500, 10)
 
-parameters = Param(Equilibrium.SECOND)
-sakthivel(parameters, 500, 10)
+# parameters = Param(Equilibrium.SECOND)
+# sakthivel(parameters, 2500, 10)
 
-# parameters = Param(Equilibrium.THIRD)
-# sakthivel(parameters, 500, 10)
+parameters = Param(Equilibrium.THIRD)
+sakthivel(parameters, 2500, 10)
 
